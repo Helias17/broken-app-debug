@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const Game = require('../models/game');
+
+const Game = require('../models/GameInstance');
 
 router.get('/all', (req, res) => {
     Game.findAll({ where: { owner_id: req.user.id } })
         .then(
-            function findSuccess(data) {
+            function findSuccess(games) {
                 res.status(200).json({
                     games: games,
                     message: "Data fetched."
