@@ -5,6 +5,8 @@ const gameController = require('./controllers/gamecontroller');
 const UserModel = require('./models/user');
 const GameModel = require('./models/game');
 
+const port = process.env.PORT || 3000;
+
 const User = UserModel(sequelize, Sequelize);
 const Game = GameModel(sequelize, Sequelize);
 sequelize.sync({ force: true });
@@ -15,6 +17,6 @@ app.use(require('body-parser'));
 app.use('/api/auth', userController);
 app.use(require('./middleware/validate-session'));
 app.use('/api/game', gameController);
-app.listen(function() {
-    console.log("App is listening on 4000");
+app.listen(port, () => {
+    console.log(`Server has been started on port ${port}...`);
 })
