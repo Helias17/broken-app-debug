@@ -9,7 +9,7 @@ const Game = require('./models/GameInstance');
 
 const port = process.env.PORT || 3000;
 
-sequelize.sync({ force: true });
+sequelize.sync(); // { force: true }
 
 const app = express();
 app.use(cors());
